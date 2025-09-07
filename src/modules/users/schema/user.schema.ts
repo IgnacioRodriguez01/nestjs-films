@@ -17,11 +17,9 @@ export class User {
     
     @Prop({ required: true, default: Role.USER })
     role: string;
-
-    @Prop({ default: null })
-    accessToken: string;
 }
 
 export type UserDocument = HydratedDocument<User>;
 
 export const UserSchema = SchemaFactory.createForClass(User);
+

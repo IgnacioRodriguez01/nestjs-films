@@ -1,12 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { Controller } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
+@ApiTags('Users')
 export class UsersController {
-    constructor(private readonly usersService: UsersService) {}
 
-    @Get()
-    async findAll() {
-        return this.usersService.findAll();
-    }
 }
