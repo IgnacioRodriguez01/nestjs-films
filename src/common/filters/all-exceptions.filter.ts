@@ -7,6 +7,7 @@ import {
     BadRequestException,
   } from '@nestjs/common';
   import { Request, Response } from 'express';
+  import { MongoError } from 'mongodb';
   
   @Catch()
   export class AllExceptionsFilter implements ExceptionFilter {
@@ -34,6 +35,12 @@ import {
             typeof m === 'string' ? m : Object.values(m).flat()
           );
         }
+      }
+  
+      // Errores de Mongo
+      else if (exception instanceof MongoError) {
+        status = HttpStatus.BAD_REQUEST;
+        message = exception.message;
       }
   
       // Para errores no manejados

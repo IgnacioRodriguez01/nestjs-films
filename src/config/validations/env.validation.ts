@@ -20,6 +20,9 @@ class EnvironmentVariables {
   MONGO_URI: string;
 
   @IsString()
+  SWAPI_URL: string;
+
+  @IsString()
   JWT_SECRET: string;
 }
 

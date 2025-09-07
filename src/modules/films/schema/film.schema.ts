@@ -3,11 +3,11 @@ import { HydratedDocument, Types } from 'mongoose';
 
 @Schema({ _id: false })
 export class FilmProperties {
-  @Prop({ required: true })
+  @Prop()
   title: string;
 
-  @Prop({ required: true })
-  episode_id: number;
+  @Prop()
+  episode_id: string;
 
   @Prop()
   opening_crawl: string;
@@ -39,10 +39,10 @@ export class FilmProperties {
   @Prop({ required: false, default: null })
   url: string;
 
-  @Prop({ required: false, default: null })
+  @Prop({ required: false, default: new Date() })
   created: Date;
 
-  @Prop({ required: false, default: null })
+  @Prop({ required: false, default: new Date() })
   edited: Date;
 }
 
@@ -57,6 +57,9 @@ export class Film {
 
   @Prop({ type: FilmPropertiesSchema, required: true })
   properties: FilmProperties;
+
+  @Prop({ unique: true, required: true })
+  uid: string;
 }
 
 export type FilmDocument = HydratedDocument<Film>;

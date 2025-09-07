@@ -12,7 +12,6 @@ export const setupSwagger = (app: INestApplication): void => {
 
   document.tags = [
     { name: 'Auth', description: 'Endpoints for authentication' },
-    { name: 'Users', description: 'Endpoints for user management' },
     { name: 'Films', description: 'Endpoints for film management' },
     { name: 'Health', description: 'Endpoints to check the health and status of the system' },
   ]

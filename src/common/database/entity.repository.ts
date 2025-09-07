@@ -38,10 +38,26 @@ export abstract class EntityRepository<T extends Document> {
         return entity;
     }
 
+    async updateOrCreate(filter: FilterQuery<T>, update: UpdateQuery<unknown>): Promise<T> {
+        const entity = await this.entityModel.findOneAndUpdate(filter, update, { new: true, upsert: true }).exec();
+        return entity;
+    }
+
     async create(entity: unknown): Promise<T> {
         const createdEntity = new this.entityModel(entity);
         return createdEntity.save();
     }
+
+    async findOrCreate(filter: FilterQuery<T>, projection?: Record<string, unknown>): Promise<T> {
+        const data = await this.entityModel.findOne(filter, { __v: 0, ...projection }).exec()
+    
+        if (!data) {
+          const entity = new this.entityModel(filter)
+    
+          return (await entity.save())
+        }
+        return data
+      }
 
     async deleteOrFail(id: Types.ObjectId): Promise<T> {
         const entity = await this.entityModel.findByIdAndDelete(id).exec();

@@ -1,6 +1,6 @@
 import { ApiProperty, PickType } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
-import { IsEmail, IsEnum, IsString } from "class-validator";
+import { IsEmail, IsString } from "class-validator";
 import { Role } from "src/common/enums/role.enum";
 
 export class RegisterDto {
