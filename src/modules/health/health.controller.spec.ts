@@ -15,4 +15,10 @@ describe('HealthController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('healthCheck', () => {
+    it('should return { status: \'OK\' }', () => {
+      expect(controller.healthCheck()).toEqual({ status: 'OK' });
+    });
+  });
 });
