@@ -61,4 +61,4 @@ La documentación de la API se encuentra en la ruta /docs.
 
 ## Hosting
 
-El proyecto se encuentra desplegado en [https://nestjs-films.vercel.app/](https://nestjs-films.vercel.app/).
+El proyecto se encuentra desplegado en [Fly.io](https://nestjs-films.fly.dev/docs).
